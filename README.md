@@ -387,14 +387,6 @@ streamlit run app.py
 سپس آدرس محلی‌ای که Streamlit چاپ می‌کند (معمولاً `http://localhost:8501`) را باز کنید، یک فایل صوتی آپلود کنید، و تشخیص‌ها را بررسی کنید.
 
 
-
-| تنظیمات و آپلود | نتیجه‌ی تشخیص |
-|---|---|
-| `docs/screenshot_sidebar.png` | `docs/screenshot_detection.png` |
-
-```markdown
-![تنظیمات نوار کناری](docs/screenshot_sidebar.png)
-![شکل موج به‌همراه تشخیص‌ها](docs/screenshot_detection.png)
 ```
 
 ## پیکربندی
