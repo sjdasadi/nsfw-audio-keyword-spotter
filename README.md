@@ -388,7 +388,6 @@ streamlit run app.py
 
 
 ```
-
 ## پیکربندی
 
 تمام پارامترهای قابل‌تنظیم در فایل `config.py` قرار دارند، از جمله:
@@ -400,4 +399,4 @@ streamlit run app.py
 - تطبیق: `DEFAULT_SIM_THRESHOLD`، `NMS_IOU_THRESHOLD`
 
 
-
+---
