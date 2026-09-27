@@ -387,8 +387,8 @@ streamlit run app.py
 سپس آدرس محلی‌ای که Streamlit چاپ می‌کند (معمولاً `http://localhost:8501`) را باز کنید، یک فایل صوتی آپلود کنید، و تشخیص‌ها را بررسی کنید.
 
 
-```
 ## پیکربندی
+
 
 تمام پارامترهای قابل‌تنظیم در فایل `config.py` قرار دارند، از جمله:
 
@@ -398,5 +398,3 @@ streamlit run app.py
 - قطعه‌بندی: `VAD_AGGRESSIVENESS`، `VAD_FRAME_MS`، `WINDOW_SIZES_MS`، `WINDOW_HOP_MS`
 - تطبیق: `DEFAULT_SIM_THRESHOLD`، `NMS_IOU_THRESHOLD`
 
-
----
