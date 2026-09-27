@@ -49,8 +49,8 @@ In this project, KWS is implemented as an **embedding + similarity search** prob
 
 ```mermaid
 flowchart TD
-    A["📄 data/nsfw_words.txt<br/>data/normal_words.txt"] --> B["generate_references.py<br/>XTTS-v2 voice cloning"]
-    S["🎙️ speaker_refs/<br/>3-5 reference voices"] --> B
+    A[" data/nsfw_words.txt<br/>data/normal_words.txt"] --> B["generate_references.py<br/>XTTS-v2 voice cloning"]
+    S[" speaker_refs/<br/>3-5 reference voices"] --> B
     B --> C["references/nsfw/&lt;word&gt;/*.wav<br/>references/normal/&lt;word&gt;/*.wav"]
     C --> D["train_awe.py<br/>Triplet-loss training<br/>(anchor / positive / negative)"]
     D --> E["checkpoints/awe_encoder.pt<br/>(trained AWE encoder)"]
@@ -70,7 +70,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    U["🎧 User uploads audio<br/>(app.py / Streamlit)"] --> L["features.py<br/>load_audio + log-mel spectrogram"]
+    U[" User uploads audio<br/>(app.py / Streamlit)"] --> L["features.py<br/>load_audio + log-mel spectrogram"]
     L --> V["segmentation.py<br/>WebRTC VAD → speech regions"]
     V --> W["Sliding windows<br/>(300/450/600/800 ms, hop 100 ms)<br/>→ candidate segments"]
     W --> EMB["matcher.py<br/>AWEEncoder embeds each candidate"]
@@ -103,15 +103,15 @@ The demo is a single-page **Streamlit** app (`app.py`):
 
 ## Features
 
-- 🧠 **No ASR required** — detection is done purely via embedding similarity, not transcription.
-- 🗣️ **Speaker‑agnostic** — triplet training across multiple synthetic voices makes the encoder robust to voice/speaker variation.
-- 🎯 **Adjustable sensitivity** — live similarity threshold slider, backed by a calibrated suggestion (`threshold_report.json`).
-- 🪟 **Multi-scale candidate windows** — several window sizes (300–800 ms) catch words of varying length.
-- ✂️ **VAD-based pruning** — skips silence/non-speech to cut down candidate count and false positives.
-- 🧹 **Non-Max Suppression** — deduplicates overlapping detections so each word occurrence is reported once.
-- 📊 **Interactive waveform visualization** with highlighted detection spans (Plotly).
-- 🔊 **Per-detection audio playback** — listen to exactly the flagged clip.
-- ➕ **Extensible vocabulary** — add a new target word just by adding it to the wordlist and regenerating references + rebuilding the bank; no full retrain of the whole pipeline logic required (though retraining refines general discrimination).
+-  **No ASR required** — detection is done purely via embedding similarity, not transcription.
+-  **Speaker‑agnostic** — triplet training across multiple synthetic voices makes the encoder robust to voice/speaker variation.
+-  **Adjustable sensitivity** — live similarity threshold slider, backed by a calibrated suggestion (`threshold_report.json`).
+-  **Multi-scale candidate windows** — several window sizes (300–800 ms) catch words of varying length.
+-  **VAD-based pruning** — skips silence/non-speech to cut down candidate count and false positives.
+-  **Non-Max Suppression** — deduplicates overlapping detections so each word occurrence is reported once.
+-  **Interactive waveform visualization** with highlighted detection spans (Plotly).
+-  **Per-detection audio playback** — listen to exactly the flagged clip.
+-  **Extensible vocabulary** — add a new target word just by adding it to the wordlist and regenerating references + rebuilding the bank; no full retrain of the whole pipeline logic required (though retraining refines general discrimination).
 
 ## Project Structure
 
@@ -186,18 +186,6 @@ streamlit run app.py
 
 Then open the local URL Streamlit prints (typically `http://localhost:8501`), upload an audio file, and inspect the detections.
 
-## Screenshots
-
-> _Add screenshots of the running app here once available, e.g.:_
-
-| Upload & Settings | Detection Result |
-|---|---|
-| `docs/screenshot_sidebar.png` | `docs/screenshot_detection.png` |
-
-```markdown
-![Sidebar settings](docs/screenshot_sidebar.png)
-![Waveform with detections](docs/screenshot_detection.png)
-```
 
 ## Configuration
 
@@ -208,8 +196,6 @@ All tunables live in `config.py`, including:
 - AWE training: `EMBED_DIM`, `TRIPLET_MARGIN`, `TRAIN_EPOCHS`, `TRAIN_BATCH_SIZE`, `TRIPLETS_PER_EPOCH`, `LEARNING_RATE`
 - Segmentation: `VAD_AGGRESSIVENESS`, `VAD_FRAME_MS`, `WINDOW_SIZES_MS`, `WINDOW_HOP_MS`
 - Matching: `DEFAULT_SIM_THRESHOLD`, `NMS_IOU_THRESHOLD`
-
-
 
 
 ---
