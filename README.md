@@ -21,11 +21,7 @@
 - [Project Structure](#project-structure)
 - [Requirements](#requirements)
 - [Installation & Usage](#installation--usage)
-- [Screenshots](#screenshots)
 - [Configuration](#configuration)
-- [Notes & Limitations](#notes--limitations)
-- [License](#license)
-
 ---
 
 ## About the Project
@@ -213,20 +209,12 @@ All tunables live in `config.py`, including:
 - Segmentation: `VAD_AGGRESSIVENESS`, `VAD_FRAME_MS`, `WINDOW_SIZES_MS`, `WINDOW_HOP_MS`
 - Matching: `DEFAULT_SIM_THRESHOLD`, `NMS_IOU_THRESHOLD`
 
-## Notes & Limitations
 
-- This is a **similarity-based, recall-oriented** detector: it intentionally generates many overlapping candidate windows and relies on thresholding + NMS to filter them, which trades some compute for better recall on short/variable-length words.
-- Detection quality depends heavily on the diversity of synthetic reference voices and the quality/coverage of the negative ("normal") word list used to calibrate the threshold.
-- It is intended as a **research / prototyping tool**, not a production-grade content moderation system.
 
-## License
-
-MIT — adjust as needed for your repository.
 
 ---
 ---
 
-<div dir="rtl">
 
 # 🔊 سامانه تشخیص کلمات نامناسب در صدا (NSFW Audio Keyword Spotter)
 
