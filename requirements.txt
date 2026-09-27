@@ -1,0 +1,32 @@
+# --- Assumed already installed by user ---
+TTS>=0.22.0            #(Coqui TTS, provides XTTS-v2)
+#
+# IMPORTANT: Coqui TTS 0.22.0 is unmaintained and only tested against an
+# older PyTorch/transformers/gruut stack. Newer releases of its own
+# transitive dependencies break it in several independent ways:
+#   - transformers >= ~4.57 removed BeamSearchScorer (ImportError)
+#   - torch >= 2.6 changed torch.load's default weights_only (UnpicklingError)
+#   - torchaudio >= 2.9 dropped its built-in load backends in favor of the
+#     separate `torchcodec` package (ImportError: TorchCodec is required)
+#   - numpy >= 2.0 and networkx >= 3.0 conflict with gruut==2.2.3's pins
+#     (gruut is TTS's text-normalization dependency)
+# The pins below match Coqui's own official XTTS-v2 demo environment and
+# avoid all of these at once. Install with:
+#     pip install -r requirements.txt
+#     pip check   # should report no broken requirements
+
+# --- Core app dependencies ---
+streamlit>=1.32
+torch==2.5.1
+torchaudio==2.5.1
+librosa>=0.10
+soundfile>=0.12
+numpy<2.0.0
+networkx<3.0.0
+scipy
+webrtcvad>=2.0.10
+audiomentations>=0.33
+tqdm
+plotly
+setuptools<82
+transformers==4.40.0
